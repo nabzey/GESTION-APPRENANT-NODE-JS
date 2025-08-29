@@ -3,3 +3,7 @@ node_modules/
 
 # Fichiers de build
 dist/
+
+/src/generated/prisma
+
+/src/generated/prisma

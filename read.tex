@@ -1,0 +1,73 @@
+Comment tout ça se combine dans un projet :
+
+TypeScript → pour écrire un code sûr et typé.
+
+Prisma → pour accéder à la base MySQL facilement.
+
+Zod → pour vérifier les données avant de les envoyer à la base.
+
+MySQL → pour stocker toutes les données persistantes.
+
+Exemple de flux complet :
+
+Un utilisateur envoie son nom et email via une API.
+
+Zod valide les données.
+
+Prisma enregistre l’utilisateur dans la base MySQL.
+
+TypeScript assure que tout est typé et sûr.
+
+*****************
+Zod est une librairie de validation et de parsing pour TypeScript.
+
+Elle permet de vérifier que les données reçues (par exemple depuis un formulaire ou une API) sont correctes avant de les utiliser.
+************
+
+Prisma est un ORM (Object-Relational Mapping).
+
+Il sert à interagir avec la base de données (ici MySQL) de manière plus simple et sécurisée.
+
+Au lieu d’écrire des requêtes SQL complexes, tu peux manipuler les données avec des fonctions TypeScript.
+
+**************
+pour installer prisma :
+npm install prisma @prisma/client
+
+il y a en fait deux paquets différents :
+
+1️⃣ prisma
+
+C’est l’outil CLI (Command Line Interface).
+
+Il sert uniquement au développement.
+
+Tu l’utilises pour :
+
+initialiser le projet (npx prisma init)
+
+créer/modifier ton schéma (prisma/schema.prisma)
+
+générer les migrations (npx prisma migrate dev)
+
+générer le client (npx prisma generate)
+👉 Il n’est pas utilisé dans ton code, mais plutôt dans le terminal pour préparer la base et générer le client.
+
+2️⃣ @prisma/client
+
+C’est la librairie que tu utilises dans ton code TypeScript/JavaScript.
+
+Elle contient le Prisma Client généré : c’est un ensemble de classes et fonctions qui te permettent de manipuler ta base comme une API TypeScript.
+👉 Sans @prisma/client, tu ne pourrais pas utiliser PrismaClient dans ton code.
+
+Pourquoi ils sont séparés ?
+
+Sécurité et poids : prisma (CLI) est souvent installé en dev dependency (npm install -D prisma) car tu n’en as pas besoin en production.
+
+Clarté : @prisma/client est le code que ton appli utilise réellement, il doit donc être installé comme dépendance normale.
+
+⚡ En résumé :
+
+prisma → outil de dev (migration, génération du client).
+
+@prisma/client → librairie utilisée dans ton code pour parler avec MySQL.
